@@ -1,20 +1,19 @@
 name: Deploy
-
 on:
   push:
     branches: [main]
   workflow_dispatch:
-
 permissions:
   contents: read
-
 jobs:
   build-and-test:
     uses: ./.github/workflows/ci.yml
-
   deploy:
     needs: build-and-test
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: production
       url: ${{ steps.deployment.outputs.page_url }}
