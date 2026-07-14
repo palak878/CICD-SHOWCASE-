@@ -1,5 +1,5 @@
 name: "Greet"
-description: "Checks out the repo and prints a greeting"
+description: "Prints a greeting"
 
 inputs:
   name:
@@ -10,6 +10,5 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - uses: actions/checkout@v4
     - run: echo "Hello, ${{ inputs.name }}!"
       shell: bash
