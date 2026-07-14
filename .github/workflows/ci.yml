@@ -1,11 +1,14 @@
 name: Palak
+
 on: [push, pull_request, workflow_dispatch]
+
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - run: echo "linting..."
+
   test:
     needs: lint
     runs-on: ubuntu-latest
@@ -18,12 +21,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: echo "testing on node ${{ matrix.node-version }}"
+
   build:
     needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - run: echo "building..."
-
-
-i ahve written this as it is
