@@ -1,35 +1,29 @@
 name: Palak
-
 on: [push, pull_request, workflow_dispatch]
-
 jobs:
- lint:
-  runs-on :ubuntu-latest
-  steps:
-   - uses:actions/checkout@v4
-   - run: echo"linting.."
-
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "linting..."
   test:
-   needs: lint
-   runs-on:ubuntu-lates
-   strategy:
-     matrix:
-       node-version:[18, 20]
-     steps:
+    needs: lint
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18, 20]
+    steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
       - run: echo "testing on node ${{ matrix.node-version }}"
-     
   build:
     needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - run: echo "building..."
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - run: echo "hi"
 
+
+i ahve written this as it is
