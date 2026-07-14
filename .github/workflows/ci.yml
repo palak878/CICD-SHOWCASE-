@@ -1,0 +1,10 @@
+name: Palak
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  job-name:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "hi"
